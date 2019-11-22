@@ -12,5 +12,68 @@
         <module>kafka-utils</module>
     </modules>
 
+    <properties>
+        <spark.version>2.4.0</spark.version>
+        <scala.version>2.11.8</scala.version>
+        <log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.22</slf4j.version>
+
+        <fastjson.version>1.2.47</fastjson.version>
+        <httpclient.version>4.5.5</httpclient.version>
+        <httpmime.version>4.3.6</httpmime.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <phoenix.version>4.8</phoenix.version>
+        <druid.version>1.1.16</druid.version>
+
+        <mysql.version>5.1.29</mysql.version>
+
+    </properties>
+
+    <dependencies>
+        <!--此处放日志包，所有项目都要引用-->
+        <!-- 所有子项目的日志框架 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- 具体的日志实现 -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- 打包插件, 否则 scala 类不会编译并打包进去 -->
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
